@@ -14,17 +14,7 @@ namespace FileTask
     Задача 3. Возьмите любой текстовый файл, и найдите в нем размер самой длинной строки.*/
 
     class Program
-    {
-        public static string Task1(int firstValue, int seconValue)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            for(int i = firstValue; i <= seconValue; i++)
-            {
-                stringBuilder.AppendFormat(i.ToString() + ",");
-            }
-            return stringBuilder.ToString();
-        }
-
+    {       
         static void Main(string[] args)
         {
             string path = Path.GetFullPath("File-Task");
@@ -33,37 +23,17 @@ namespace FileTask
                 driveInfo.Create();
 
             //Задача 1:
-            var stringNumbers = Task1(1, 500);
-            using (FileStream fileStream = new FileStream($@"{path}\numbers.txt", FileMode.Create))
-            {
-                byte[] vs = Encoding.Default.GetBytes(stringNumbers);
-                fileStream.Write(vs, 0, vs.Length);
-            }
+            var task1 = new Task1();
+            task1.Task(path);
 
             //Задача 2:
-            var array = new string[] { "red", "green", "black", "white", "blue" };
-            using (StreamWriter streamWriter = new StreamWriter($@"{path}\ColorsRecordedInColumn.txt"))
-            {
-                for (int i = 0; i < array.Length; i++)
-                    streamWriter.WriteLine(array[i]);
-            }
+            var task2 = new Task2();
+            task2.Task(path);
 
             //Задача 3:
-            using (StreamReader streamReader = new StreamReader($@"{path}\ColorsRecordedInColumn.txt"))
-            {
-                int max = 0;
-                while (!streamReader.EndOfStream)
-                {
-                    string s = streamReader.ReadLine();
-                    if (max < s.Length)
-                    {
-                        max = s.Length;
-                    }
-                }
-                streamReader.Close();
-                Console.WriteLine("Размер самой длинной строки: " + max);
+            var task3 = new Task3();
+            task3.Task(path);
 
-            }
             Console.Read();            
         }
     }
