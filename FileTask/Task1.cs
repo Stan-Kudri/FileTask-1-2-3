@@ -7,6 +7,7 @@ using System.IO;
 
 namespace FileTask
 {
+    //Задача 1. Создайте файл numbers.txt и запишите в него натуральные числа от 1 до 500 через запятую.
     class Task1
     {
         private static string Builder(int firstValue, int seconValue)
@@ -22,11 +23,10 @@ namespace FileTask
         public void Task(string path)
         {
             var stringNumbers = Builder(1, 500);
-            using (FileStream fileStream = new FileStream($@"{path}\numbers.txt", FileMode.Create))
+            using (StreamWriter streamWriter = new StreamWriter($@"{path}\numbers.txt",true,Encoding.Default))
             {
-                byte[] vs = Encoding.Default.GetBytes(stringNumbers);
-                fileStream.Write(vs, 0, vs.Length);
-            }
+                streamWriter.Write(stringNumbers);
+            }            
         }
     }
 }

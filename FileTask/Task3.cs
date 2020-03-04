@@ -7,6 +7,7 @@ using System.IO;
 
 namespace FileTask
 {
+    //Задача 3. Возьмите любой текстовый файл, и найдите в нем размер самой длинной строки.
     class Task3
     {
         public void Task(string path)

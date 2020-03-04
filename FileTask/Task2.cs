@@ -7,6 +7,7 @@ using System.IO;
 
 namespace FileTask
 {
+    //Задача 2. Дан массив строк: "red", "green", "black", "white", "blue". Запишите в файл элементы массива построчно (каждый элемент в новой строке).
     class Task2
     {
         public void Task(string path)
@@ -16,7 +17,7 @@ namespace FileTask
             {
                 for (int i = 0; i < array.Length; i++)
                     streamWriter.WriteLine(array[i]);
-            }
+            } 
         }
     }
 }
